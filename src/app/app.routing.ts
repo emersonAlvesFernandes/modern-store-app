@@ -7,7 +7,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
-const appRoutes: Routes= [
+const appRoutes: Routes = [
     { path: '', component: LoginPageComponent },
     { path: 'home', component: HomePageComponent },
     { path: 'signup', component: SignUpPageComponent },
