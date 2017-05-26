@@ -44,7 +44,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
     HttpModule,
     Routing
   ],
-  providers: [],
+  providers: [], //injetar dependencia aqui para toda a aplicação 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
