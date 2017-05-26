@@ -6,9 +6,10 @@
       </h1>
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
-          <form [FormGroup]="form">
+          <form [formGroup]="form">
+
             <p class="control">
-              <input class="input is-large" type="email" placeholder="Usuário" formControlName="email">
+              <input class="input is-large" type="email" placeholder="E-mail" formControlName="email">
             </p>
 
             <br>
@@ -20,11 +21,12 @@
             <br>
 
             <p>
-              <button (click)="submit()" class="button is-primary is-inverted is-outlined is-large is-fullwidth" [disabled]="!form.valid">
-              ENTRAR</button>
+              <button (click)="submit()" class="button is-primary is-inverted is-outlined is-large is-fullwidth" 
+              [disabled]="!form.valid">ENTRAR</button>
               <br>
               <a class="button is-link is-fullwidth">AINDA NÃO SOU CADASTRADO</a>
             </p>
+            
           </form>
         </div>
       </div>

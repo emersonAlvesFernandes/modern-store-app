@@ -16,14 +16,15 @@ export class LoginPageComponent implements OnInit {
         Validators.required
       ])],
       password: ['', Validators.compose([
-        Validators.minLength(5),
+        Validators.minLength(6),
         Validators.maxLength(160),
         Validators.required
       ])]
     });
   }
 
-  ngOnInit() {
-  }
+//19min - aula 8
+
+  ngOnInit() {  }
 
 }
