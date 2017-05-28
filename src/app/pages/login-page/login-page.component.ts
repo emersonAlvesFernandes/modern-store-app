@@ -6,12 +6,12 @@ import { Ui } from '../../utils/ui';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  providers: [Ui] //não esquecer de injetar a classe estática aqui 
+  providers: [Ui] //não esquecer de injetar a classe estática aqui ou globalmente no app.module.ts
 })
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ui: Ui) {
     this.form = this.fb.group({  
       email: ['', Validators.compose([
         Validators.minLength(5),
@@ -30,18 +30,12 @@ export class LoginPageComponent implements OnInit {
   
   ngOnInit() { }
   
-  checkEmail(){
-            
-      this.form.controls['email'].disable;
+  checkEmail(){            
+    this.ui.lock('emailControl');
     
-      setTimeout(()=>{
-
-        document.getElementById('emailControl').classList.remove('isloading');        
-        this.form.controls['email'].enable;
-
-        console.log(this.form.controls['email'].value);
-
-      }, 3000);
-    };
-
+    setTimeout(()=>{        
+      this.ui.unlock('emailControl');
+       console.log(this.form.controls['email'].value);
+      }, 2000);
+    }
 }
