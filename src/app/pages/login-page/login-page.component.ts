@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CustomValidator } from '../../validators/custom.validator';
 import { Ui } from '../../utils/ui';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  providers: [Ui] //não esquecer de injetar a classe estática aqui ou globalmente no app.module.ts
+  providers: [Ui, DataService] //não esquecer de injetar a classe estática aqui ou globalmente no app.module.ts
 })
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, private ui: Ui) {
+  constructor(private fb: FormBuilder, private ui: Ui, private dataService: DataService) {
     this.form = this.fb.group({  
       email: ['', Validators.compose([
         Validators.minLength(5),
@@ -28,7 +29,16 @@ export class LoginPageComponent implements OnInit {
     });
   }
   
-  ngOnInit() { }
+  ngOnInit() { 
+    this
+      .dataService
+      .getCourses()
+      .subscribe(result => {
+        console.log(result)  
+      }, error => {
+        console.log(error)  
+      });
+  }
   
   checkEmail(){            
     this.ui.lock('emailControl');
@@ -38,4 +48,9 @@ export class LoginPageComponent implements OnInit {
        console.log(this.form.controls['email'].value);
       }, 2000);
     }
+
+  submit(){
+    this.dataService.createUser(this.form.value);
+  }
+
 }
