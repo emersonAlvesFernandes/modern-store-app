@@ -61,8 +61,12 @@ export class SignUpPageComponent implements OnInit {
     this.dataService.createUser(this.form.value).subscribe(result => {
       console.log(result);
     }, error=>{
+      var data = JSON.parse(error._body) ;
       console.log(error);
     });
   }
+
+
+// PAREI AQUI: video 11, +/- 10min
 
 }
