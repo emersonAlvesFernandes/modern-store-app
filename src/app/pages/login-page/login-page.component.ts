@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CustomValidator } from '../../validators/custom.validator';
-import { Ui } from '../../utils/ui';
 import { DataService } from '../../services/data.service';
+import { Ui } from '../../utils/ui';
 
 @Component({
   selector: 'app-login-page',
@@ -17,8 +17,7 @@ export class LoginPageComponent implements OnInit {
       email: ['', Validators.compose([
         Validators.minLength(5),
         Validators.maxLength(160),
-        Validators.required,
-        CustomValidator.EmailValidator
+        Validators.required,        
       ])]
       ,
       password: ['', Validators.compose([
@@ -30,14 +29,14 @@ export class LoginPageComponent implements OnInit {
   }
   
   ngOnInit() { 
-    this
-      .dataService
-      .getCourses()
-      .subscribe(result => {
-        console.log(result)  
-      }, error => {
-        console.log(error)  
-      });
+    // this
+    //   .dataService
+    //   .getCourses()
+    //   .subscribe(result => {
+    //     console.log(result)  
+    //   }, error => {
+    //     console.log(error)  
+    //   });
   }
   
   checkEmail(){            

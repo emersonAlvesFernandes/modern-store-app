@@ -4,7 +4,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
-// Rotas 
+//  Rotas 
 import{Routing, RoutingProviders} from './app.routing';
 
 
@@ -25,6 +25,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
+//  Services
+import { CartService } from './services/cart.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
     HttpModule,
     Routing
   ],
-  providers: [], //injetar dependencia aqui para toda a aplicação 
+  providers: [CartService], //injetar dependencia aqui para toda a aplicação 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
